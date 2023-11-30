@@ -1,6 +1,10 @@
 import { JiraTasks } from '../../components';
+import { useTaskStore } from '../../stores';
 
 export const JiraPage = () => {
+  const openTasks = useTaskStore(state => state.filterByStatus('open'));
+  console.log(openTasks);
+
   return (
     <>
       <h1>Tareas</h1>
