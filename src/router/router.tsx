@@ -38,8 +38,6 @@ export const router = createBrowserRouter( [
 
         ]
       },
-
-      /// Auth Routes
       {
         path: 'auth',
         element: <AuthLayout />,
