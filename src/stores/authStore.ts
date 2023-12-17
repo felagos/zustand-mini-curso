@@ -8,6 +8,7 @@ export interface AuthState {
 	token?: string;
 	user?: User;
 	login: (email: string, password: string) => Promise<void>;
+	checkAuthStatus: () => Promise<void>;
 }
 
 const storeApi: StateCreator<AuthState> = (set) => ({
@@ -30,7 +31,16 @@ const storeApi: StateCreator<AuthState> = (set) => ({
 			})
 		}
 
-	}
+	},
+	checkAuthStatus: async () => {
+		const { token, ...user } = await AuthService.checkStatus();
+
+		set({
+			status: 'authorized',
+			token,
+			user
+		})
+	},
 });
 
 export const useAuthStore = create<AuthState>()(

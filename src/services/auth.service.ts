@@ -18,4 +18,10 @@ export class AuthService {
 		return response.data;
 	}
 
+	static async checkStatus() {
+		const response = await api.get<LoginResponse>('/auth/check-status');
+
+		return response.data;
+	}
+
 }
